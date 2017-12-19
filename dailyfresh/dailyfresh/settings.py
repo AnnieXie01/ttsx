@@ -88,11 +88,12 @@ DATABASES = {
         'USER': 'root',
         'PASSWORD': 'mysql',
         'HOST': 'localhost',
-        'PORT': '3306'
+        'PORT': 3306,
     }
 }
 
-
+# 指定Django认证系统user模型类
+AUTH_USER_MODEL = 'user.User'
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
@@ -113,3 +114,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+TINYMCE_DEFAULT_CONFIG = {
+    'theme': 'advanced',
+    'width': 600,
+    'height': 400,
+}
