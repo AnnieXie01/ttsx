@@ -148,3 +148,12 @@ SESSION_CACHE_ALIAS = "default"
 
 # 指定login的url地址
 LOGIN_URL = '/user/login'
+
+# 配置文件存储类,修改默认的文件存储位置
+DEFAULT_FILE_STORAGE = 'utils.fdfs.storage.FDFSStorage'
+
+# 配置fdfs客户端配置文件路径
+FDFS_CLIENT_CONF = './utils/fdfs/client.conf'
+
+# 配置FDFS服务器的url路径
+FDFS_SERVER_URL = 'http://192.168.138.133:8888'
