@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block title %}天天生鲜-用户中心{% endblock title %}
+{% block jsfiles %}{% endblock jsfiles %}
+
+{% load staticfiles %}
+{% block searchcar %}
+	<div class="search_bar clearfix">
+		<a href="index.html" class="logo fl"><img src="{% static 'images/logo.png' %}"></a>
+		<div class="sub_page_name fl">|&nbsp;&nbsp;&nbsp;&nbsp;用户中心</div>
+		<div class="search_con fr">
+			<input type="text" class="input_text fl" name="" placeholder="搜索商品">
+			<input type="button" class="input_btn fr" name="" value="搜索">
+		</div>		
+	</div>
+{% endblock searchcar %}
+{% block body %}
+	<div class="main_con clearfix">
+		<div class="left_menu_con clearfix">
+			<h3>用户中心</h3>
+			<ul>
+				<li><a href="{% url 'user:center_info' %}">· 个人信息</a></li>
+				<li><a href="{% url 'user:center_order' %}">· 全部订单</a></li>
+				<li><a href="{% url 'user:center_site' %}" class="active">· 收货地址</a></li>
+			</ul>
+		</div>
+		<div class="right_content clearfix">
+				<h3 class="common_title2">收货地址</h3>
+				<div class="site_con">
+					<dl>
+						<dt>当前地址：</dt>
+                        {% if addr %}
+						<dd>{{addr.addr}} （{{addr.receiver}} 收） {{addr.phone}}</dd>
+					    {% else %}
+                        <dd>无地址信息</dd>
+                        {% endif %}
+                    </dl>
+				</div>
+				<h3 class="common_title2">编辑地址</h3>
+				<div class="site_con">
+					<form method="post">
+                        {% csrf_token %}
+						<div class="form_group">
+							<label>收件人：</label>
+							<input type="text" name="receiver">
+						</div>
+						<div class="form_group form_group2">
+							<label>详细地址：</label>
+							<textarea class="site_area" name="addr"></textarea>
+						</div>
+						<div class="form_group">
+							<label>邮编：</label>
+							<input type="text" name="zip_code">
+						</div>
+						<div class="form_group">
+							<label>手机：</label>
+							<input type="text" name="phone">
+						</div>
+
+						<input type="submit" name="" value="提交" class="info_submit">
+					</form>
+                    <div>{{error_msg}}</div>
+				</div>
+		</div>
+	</div>
+{% endblock body %}
+{% block endjs %}{% endblock endjs %}

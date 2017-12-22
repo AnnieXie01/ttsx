@@ -88,7 +88,7 @@ DATABASES = {
         'USER': 'root',
         'PASSWORD': 'mysql',
         'HOST': 'localhost',
-        'PORT': 3306,
+        'PORT': '3306',
     }
 }
 
@@ -120,3 +120,31 @@ TINYMCE_DEFAULT_CONFIG = {
     'width': 600,
     'height': 400,
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.163.com'
+EMAIL_PORT = 25
+#发送邮件的邮箱
+EMAIL_HOST_USER = '447344240@163.com'
+#在邮箱中设置的客户端授权密码
+EMAIL_HOST_PASSWORD = 'w4880202l'
+#收件人看到的发件人
+EMAIL_FROM = 'python<447344240@163.com>'
+
+# 缓存配置保存到redis
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/2",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
+# 配置session的存储位置
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_CACHE_ALIAS = "default"
+
+# 指定login的url地址
+LOGIN_URL = '/user/login'
